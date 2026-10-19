@@ -1,0 +1,17 @@
+{
+  "name": "after-hours-plumbing-service",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tailwindcss -i css/tailwind.css -o css/style.css --minify && node scripts/copy-site.mjs",
+    "preview": "python3 -m http.server 8000 -d dist"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.0",
+    "@tailwindcss/forms": "^0.5.11",
+    "tailwindcss": "4.3.0"
+  }
+}

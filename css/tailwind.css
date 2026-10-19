@@ -1,0 +1,500 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+@source "../index.html";
+@source "../js";
+
+/* ========================================================
+   After Hours Plumbing - Tactical Modernism Stylesheet
+   ======================================================== */
+
+:root {
+  --color-canvas: #F6F6F2;
+  --color-ink: #090D15;
+  --color-inkpanel: #101726;
+  --color-brandred: #DC2626;
+  --color-brandreddark: #B91C1C;
+  --color-brandblue: #0284C7;
+  --color-brandbluedark: #0369A1;
+  --color-iceblue: #E0F2FE;
+  --color-hydraulicsky: #38BDF8;
+  --color-warmgray: #EAEAE4;
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  overflow-x: hidden;
+}
+
+.serif-italic {
+  font-family: 'Newsreader', 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.giant-watermark {
+  letter-spacing: -0.05em;
+  line-height: 0.82;
+  user-select: none;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(0.985);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal[data-delay="1"] { transition-delay: 0.1s; }
+.reveal[data-delay="2"] { transition-delay: 0.2s; }
+.reveal[data-delay="3"] { transition-delay: 0.3s; }
+.reveal[data-delay="4"] { transition-delay: 0.4s; }
+.reveal[data-delay="5"] { transition-delay: 0.5s; }
+
+/* Plumbing-specific motion system */
+@keyframes pipeFlow {
+  0% {
+    background-position: 0% 50%;
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-position: 200% 50%;
+    opacity: 0.5;
+  }
+}
+
+@keyframes pressureRise {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 18px 38px -16px rgba(2, 132, 199, 0.4);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 22px 44px -16px rgba(2, 132, 199, 0.52);
+  }
+}
+
+@keyframes cameraFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes waterGlow {
+  0%, 100% {
+    opacity: 0.38;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.76;
+    transform: scale(1.08);
+  }
+}
+
+.plumbing-badge {
+  position: relative;
+  overflow: hidden;
+}
+
+.plumbing-badge::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 52%;
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.08), transparent);
+  transform: translateX(-30%);
+  animation: pipeFlow 5s linear infinite;
+}
+
+.selector-shell {
+  position: relative;
+  overflow: hidden;
+}
+
+.selector-shell::before {
+  content: "";
+  position: absolute;
+  left: -25%;
+  right: -25%;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.85), rgba(2, 132, 199, 0.9), transparent);
+  background-size: 200% 100%;
+  animation: pipeFlow 4.5s linear infinite;
+  opacity: 0.8;
+}
+
+.hero-visual {
+  position: relative;
+  animation: cameraFloat 7s ease-in-out infinite;
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  right: 12%;
+  top: 10%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.3), rgba(2, 132, 199, 0) 70%);
+  filter: blur(12px);
+  animation: waterGlow 6s ease-in-out infinite;
+}
+
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  left: -10%;
+  bottom: -8%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.22), rgba(220, 38, 38, 0) 70%);
+  filter: blur(12px);
+  animation: waterGlow 7s ease-in-out infinite reverse;
+}
+
+.metric-badge {
+  animation: pressureRise 3s ease-in-out infinite;
+}
+
+.dispatch-card {
+  overflow: hidden;
+}
+
+.dispatch-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(2, 132, 199, 0.8), rgba(220, 38, 38, 0.8), transparent);
+  background-size: 200% 100%;
+  animation: pipeFlow 6s linear infinite;
+}
+
+.metric-card {
+  position: relative;
+}
+
+.metric-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(2, 132, 199, 0.7), rgba(220, 38, 38, 0.7), transparent);
+  background-size: 200% 100%;
+  opacity: 0;
+  transform: scaleX(0.5);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.metric-card:hover::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.service-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  left: -15%;
+  right: -15%;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(2, 132, 199, 0.9), rgba(220, 38, 38, 0.85), transparent);
+  background-size: 200% 100%;
+  opacity: 0;
+  animation: pipeFlow 4s linear infinite;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-art {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-art::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 30%;
+  background: linear-gradient(180deg, transparent, rgba(2, 132, 199, 0.18));
+  transform: translateY(100%);
+  transition: transform 0.45s ease;
+}
+
+.service-card:hover .service-art::after {
+  transform: translateY(0);
+}
+
+/* Reduce motion for users who prefer minimal movement */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Pulse Glow & Halo Animations */
+@keyframes redHalo {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(220, 38, 38, 0);
+  }
+}
+
+.animate-red-halo {
+  animation: redHalo 2.5s infinite;
+}
+
+@keyframes bluePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(2, 132, 199, 0);
+  }
+}
+
+.animate-blue-pulse {
+  animation: bluePulse 3s infinite;
+}
+
+/* Glassmorphism helpers */
+.glass-header {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-dark {
+  background: rgba(9, 13, 21, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Micro-interaction & Hover elevations */
+.card-hover-elevation {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+.card-hover-elevation:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+}
+
+/* Modal styles */
+.modal-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container {
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-backdrop.active .modal-container {
+  transform: scale(1) translateY(0);
+}
+
+/* Toast notifications */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  min-width: 280px;
+  max-width: 420px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Mobile Emergency Floating Bar */
+@media (max-width: 768px) {
+  .mobile-bottom-dock {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 45;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.modal-container {
+  max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 1279px) {
+  #estimate .selector-shell {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.625rem;
+  }
+
+  .selector-shell > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0;
+  }
+
+  .selector-shell > div {
+    min-width: 0;
+  }
+
+  .selector-shell select,
+  .selector-shell input {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .selector-shell > button {
+    width: 100%;
+  }
+
+  .hero-visual {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-dock {
+    gap: 0.5rem;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .mobile-bottom-dock a {
+    min-width: 0;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    white-space: nowrap;
+  }
+
+  #toast-container {
+    right: 16px;
+    bottom: calc(88px + env(safe-area-inset-bottom));
+    left: 16px;
+  }
+
+  .toast {
+    min-width: 0;
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 639px) {
+  .selector-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-visual {
+    aspect-ratio: 4 / 5;
+  }
+
+  #booking-modal,
+  #video-modal {
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  #contact .hours-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .mobile-bottom-dock a {
+    gap: 0.375rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 10px;
+  }
+
+  .mobile-bottom-dock button {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}

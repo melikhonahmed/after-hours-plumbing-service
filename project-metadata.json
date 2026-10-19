@@ -1,0 +1,26 @@
+{
+  "source": "Custom Development",
+  "updatedAt": "2026-10-19T18:00:00Z",
+  "project": {
+    "id": "ahp-landing-2026",
+    "name": "after-hours-plumbing-service",
+    "title": "Modern Landing Page Redesign",
+    "projectType": "CUSTOM_WEB_DESIGN",
+    "deviceType": "DESKTOP"
+  },
+  "screen": {
+    "id": "ahp-architectural-bento-footer",
+    "name": "after-hours-plumbing-service/architectural-bento-footer",
+    "title": "After Hours Plumbing - Architectural Bento Footer Edition",
+    "width": 2560,
+    "height": 11936,
+    "deviceType": "DESKTOP"
+  },
+  "designSystem": {
+    "name": "Emergency Trade Assurance",
+    "displayName": "Emergency Trade Assurance",
+    "primaryColor": "#dc2626",
+    "secondaryColor": "#0284c7",
+    "tertiaryColor": "#0f172a"
+  }
+}
